@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="constructor">
+  <bean id="sampleRepositoryPlugin" class="jetbrains.sample.repository.RepositoryPlugin"/>
+
+  <bean id="sampleConfigTabFragment" class="jetbrains.sample.extension.ConfigurationTabExtension">
+    <property name="includeUrl" value="regression.jsp"/>
+    <constructor-arg ref="sampleRepositoryPlugin" />
+  </bean>
+
+  <bean id="MotivationController" class="jetbrains.sample.controller.MotivationController" init-method="register">
+      <constructor-arg ref="sampleRepositoryPlugin" />
+  </bean>
+
+  <bean id="ChangeController" class="jetbrains.sample.controller.ChangeController" init-method="register">
+        <constructor-arg ref="sampleRepositoryPlugin" />
+  </bean>
+</beans>
